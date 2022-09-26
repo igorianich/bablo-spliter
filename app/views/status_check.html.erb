@@ -1,0 +1,9 @@
+<%= "Server is up" %>
+<% if @user %>
+  <div>
+    <%= "Logged in as: #{@user.email}" %>
+  </div>
+  <div>
+    <%= button_to "Logout", logout_path, method: :delete %>
+  </div>
+<% end %>
