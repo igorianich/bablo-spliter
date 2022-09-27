@@ -3,14 +3,12 @@
 <%= form_with model: @user,  url: sign_up_path  do |form| %>
   <% if @user.errors.any? %>
     <div class="alert alert-danger">
-      <% p @user.errors.full_messages %>
       <% @user.errors.full_messages.each do |message|%>
       <div> <%= message %></div>
       <%end %>
     </div>
     <%end %>
   <div class="row justify-content-start">
-<!--      <div class="row g-3 align-items-center d-flex justify-content-start">-->
     <div class="col-2">
       <label for="InputEmail1" class="col-form-label">Email address</label>
     </div>
@@ -20,7 +18,6 @@
     <div class="col-auto">
       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
-<!--      </div>-->
   </div>
     <div class="row justify-content-start">
       <div class="col-2">

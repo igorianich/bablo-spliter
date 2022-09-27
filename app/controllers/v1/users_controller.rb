@@ -10,6 +10,7 @@ module V1
       @user = User.new(sign_up_params.except(:confirm_password))
       if @user.save
         session[:user_id] = @user.id
+        session[:email] = @user.email
         redirect_to root_path, notice: 'Successfully created account'
       else
         flash[:alert] = 'Something went wrong'

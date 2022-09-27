@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get :sign_up, to: 'v1/users#new'
   post :sign_up, to: 'v1/users#create'
+  get :sign_in, to: 'v1/sessions#new'
+  post :sign_in, to: 'v1/sessions#create'
   delete :logout, to: 'v1/sessions#destroy'
 
   root to: 'status#check'
