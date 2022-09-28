@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(version: 2022_09_21_140557) do
     t.integer "total"
     t.datetime "date_time"
     t.string "description"
+    t.string "expenseable_type"
     t.bigint "expenseable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["expenseable_id"], name: "index_expenses_on_expenseable_id"
+    t.index ["expenseable_type", "expenseable_id"], name: "index_expenses_on_expenseable"
   end
 
   create_table "groups", force: :cascade do |t|

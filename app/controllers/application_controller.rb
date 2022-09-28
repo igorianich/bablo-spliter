@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_user
+  include Pundit
+  include Pundit::Authorization
+
+  before_action :current_user
 
   private
-  def set_current_user
-    @current_user = session[:user_id] ? User.find_by(id: session[:user_id]) : nil
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 end

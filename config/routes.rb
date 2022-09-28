@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get :sign_in, to: 'v1/sessions#new'
   post :sign_in, to: 'v1/sessions#create'
   delete :logout, to: 'v1/sessions#destroy'
+  get :groups, to: 'v1/groups#index'
+  get 'groups/:id', to: 'v1/groups#show'
 
   root to: 'status#check'
 end

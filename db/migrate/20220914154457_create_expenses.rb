@@ -5,7 +5,7 @@ class CreateExpenses < ActiveRecord::Migration[6.1]
       t.integer :total
       t.datetime :date_time
       t.string :description
-      t.references :expenseable
+      t.references :expenseable, polymorphic: true
 
       t.timestamps
     end
