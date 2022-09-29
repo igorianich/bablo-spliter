@@ -12,11 +12,27 @@ module V1
       render group: @group
     end
 
+    def new
+      @group = Group.new
+    end
+
+    def create
+      @group = current_user.own_groups.new(group_params)
+      if @group.save
+        flash[:success] =  'Group was created'
+        redirect_to @group, notice: 'Group was created'
+      end
+    end
+
     private
 
     # attr_accessor :groups
     def set_group
       @group = Group.find_by(id: params[:id])
+    end
+
+    def group_params
+      params.require(:group).permit(:name, :group_type).to_h.symbolize_keys
     end
   end
 end
