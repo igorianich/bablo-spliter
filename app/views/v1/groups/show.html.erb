@@ -1,0 +1,22 @@
+<h5 class="card-title ps-2">  <%= @group.name %></h5>
+<div class="d-flex flex-column align-items-center">
+  <% if (expenses =  @group.expenses.includes(:expense_debts, :expense_payments)).present? %>
+    <% @group.expenses.includes(:expense_debts, :expense_payments).each do |form| %>
+      <div class="w-100">
+        <a class="row p-1 text-decoration-none text-dark" href="http://www.google.com">
+          <div class="col-6 col-sm-1"><%=form.date_time.to_date %></div>
+          <div class="col-6 col-sm-1"><%= form.title %></div>
+          <div class="col-6 col-sm-3"><%= form.total %></div>
+        </a>
+      </div>
+    <% end %>
+  <% else %>
+    <div>
+      <h6 class="card-title ps-2"> No expenses</h6>
+    </div>
+  <% end %>
+</div>
+<div>
+  <button type="button" class="btn btn-primary">Add expense</button>
+  <button type="button" class="btn btn-primary">Delete group</button>
+</div>
