@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :own_groups, class_name: 'Group', foreign_key: :owner_id, inverse_of: :owner
   has_many :expenses, as: :expenseable
   has_and_belongs_to_many :groups,-> { distinct }, inverse_of: :members, uniq: true
+  has_and_belongs_to_many :friends,class_name: "User", join_table: :friendships,
+                          foreign_key: :user_id, association_foreign_key: :friend_user_id
+
   validates :full_name, presence: true
   validates :password, format: { with: PASSWORD_FORMAT, message: 'must contain digits, lower and upper case characters' },
             presence: true, length: { in: 6..15 }, confirmation: true, if: -> { password.present? }
@@ -19,4 +22,5 @@ class User < ApplicationRecord
   validates :phone_number,:presence => true,on: %i[update],
             :numericality => true, uniqueness: true,
             :length => { :minimum => 10, :maximum => 15 }
+  validates_associated :friends
 end
