@@ -27,7 +27,7 @@
 
         <% if session[:email]%>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/"><%="Logged in as: #{session[:email]}" %> </a>
+            <a class="nav-link active" aria-current="page" href="/profile"><%="Logged in as: #{session[:email]}" %> </a>
           </li>
           <li class="nav-item">
 <!--            <a class="nav-link active" aria-current="page" data-method="delete" href=<%#= logout_path %>>Logout</a>-->
@@ -36,7 +36,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/sign_up">Sign Up</a>
+            <a class="nav-link active" aria-="page" href="/sign_up">Sign Up</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/sign_in">Sign In</a>

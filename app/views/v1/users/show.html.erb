@@ -1,0 +1,19 @@
+<h5 class="card-title ps-2">  <%= @user.full_name %></h5>
+<div class="row p-1 text-decoration-none text-dark">
+    <div class="col-6 col-sm-1">Email:</div>
+    <div class="col-6 col-sm-2"><%= @user.email %></div>
+</div>
+<div class="row p-1 text-decoration-none text-dark">
+  <div class="col-6 col-sm-1">Phone number:</div>
+  <div class="col-6 col-sm-2"><%= @user.phone_number %></div>
+</div>
+<div class="row p-1 text-decoration-none text-dark">
+  <div class="col-6 col-sm-1">
+    <a href=<%= profile_edit_path %>>
+      <button type="button" class="btn btn-primary">Edit profile</button>
+    </a>
+  </div>
+  <div class="col-6 col-sm-2">
+    <button type="button" class="btn btn-primary">Update password</button>
+  </div>
+</div>

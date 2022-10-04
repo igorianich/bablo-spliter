@@ -6,13 +6,23 @@ Rails.application.routes.draw do
     post :sign_up, to: 'users#create'
     get :sign_in, to: 'sessions#new'
     post :sign_in, to: 'sessions#create'
+    get :profile, to: 'users#show'
+    get 'profile/edit', to: 'users#edit'
+    patch 'profile/update', to: 'users#update'
     delete :logout, to: 'sessions#destroy'
-    resources :groups, only: %i[new create show index]
+    resources :groups do
+      resources :expenses, only: %i[create new] #do
+      #     get :new
+      #     post :new, to: 'groups#create'
+      # end
+    end
     post 'groups/new', to: 'groups#create'
-    # get :groups, to: 'v1/groups#index'
-    # get 'groups/new', to: 'v1/groups#new'
-    # get 'groups/:id', to: 'v1/groups#show'
-    # post :groups, to: 'v1/groups#create'
+    # post 'expenses/new', to: 'expenses#create'
+    # get 'groups/:id/expenses/new', to: 'expenses#create'
+    # post 'groups/:id/expenses/new'
+    # resources :expenses, only: %i[new show]
+    # post 'expenses/new', to: 'expenses#create'
+
   end
 
   root to: 'status#check'

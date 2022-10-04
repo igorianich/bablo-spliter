@@ -18,10 +18,31 @@ module V1
       end
     end
 
+    def show
+      @user = current_user
+    end
+
+    def edit
+      @user = current_user
+    end
+
+    def update
+      if (@user = current_user).update(update_params)
+        flash[:success] = 'Account data is successfully updated'
+        redirect_to profile_path, notice: 'Account data is successfully updated '
+      else
+        flash[:alert] = 'Something went wrong'
+        render :edit, user: @user
+      end
+    end
+
     def sign_up_params
       params.require(:user).permit(
         :email, :full_name, :phone_number, :password, :password_confirmation
       ).to_h.symbolize_keys
+    end
+    def update_params
+      params.require(:user).permit(:email, :full_name, :phone_number).to_h.symbolize_keys
     end
   end
 end

@@ -1,0 +1,9 @@
+<% @expenses.each do |expense| %>
+  <div class="w-100">
+    <a class="row p-1 text-decoration-none text-dark" href="http://www.google.com">
+      <div class="col-6 col-sm-1"><%=expense.date_time.to_date %></div>
+      <div class="col-6 col-sm-1"><%= expense.title %></div>
+      <div class="col-6 col-sm-3"><%= expense.total %></div>
+    </a>
+  </div>
+<% end %>

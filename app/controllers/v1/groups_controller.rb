@@ -2,7 +2,7 @@
 
 module V1
   class GroupsController < ApplicationController
-    before_action :set_group, only: %i[show]
+    before_action :set_group, only: %i[show new_expense]
     def index
       @groups = current_user.groups
       render groups: @groups
@@ -22,6 +22,11 @@ module V1
         flash[:success] =  'Group was created'
         redirect_to @group, notice: 'Group was created'
       end
+    end
+
+    def new_expense
+      @expenseable = @group
+
     end
 
     private

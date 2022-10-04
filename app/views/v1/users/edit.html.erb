@@ -1,0 +1,39 @@
+<h1>Sign Up</h1>
+
+<%= form_with model: @user,  url: profile_update_path  do |form| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <% @user.errors.full_messages.each do |message|%>
+      <div> <%= message %></div>
+      <%end %>
+    </div>
+    <%end %>
+  <div class="row justify-content-start">
+    <div class="col-2">
+      <span for="InputEmail1" class="col-form-label">Email address</span>
+    </div>
+    <div class="col-3">
+      <%= form.text_field :email, class: "form-control", id: "InputEmail1", 'aria-describedby': "emailHelp"%>
+    </div>
+    <div class="col-auto">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+  </div>
+    <div class="row justify-content-start">
+      <div class="col-2">
+        <span for="InputFullName1" class="col-form-label">Full name</span>
+      </div>
+      <div class="col-3">
+        <%= form.text_field :full_name, class: "form-control", id: "InputFullName1"%>
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col-2">
+        <span for="InputPhoneNumber1" class="form-label">Phone number</span>
+      </div>
+      <div class="col-3">
+        <%= form.phone_field :phone_number, class: "form-control", id: "InputPhoneNumber1"%>
+      </div>
+    </div>
+  <button type="submit" class="btn btn-primary">Edit</button>
+<% end %>
