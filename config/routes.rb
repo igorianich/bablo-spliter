@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get :profile, to: 'users#show'
     get 'profile/edit', to: 'users#edit'
     patch 'profile/update', to: 'users#update'
+    get 'profile/edit_password', to: 'users#edit_password'
+    patch 'profile/update_password', to: 'users#update_password'
     delete :logout, to: 'sessions#destroy'
     resources :groups do
       resources :expenses, only: %i[create new] #do
