@@ -22,5 +22,14 @@ class User < ApplicationRecord
   validates :phone_number,:presence => true,on: %i[update],
             :numericality => true, uniqueness: true,
             :length => { :minimum => 10, :maximum => 15 }
-  validates_associated :friends
+
+  def add_friend(person)
+    return false if person.id == id
+
+    friends << person
+  end
+  # validates_associated :friends
+  private
+
+
 end

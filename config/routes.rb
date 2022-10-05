@@ -19,12 +19,7 @@ Rails.application.routes.draw do
       # end
     end
     post 'groups/new', to: 'groups#create'
-    # post 'expenses/new', to: 'expenses#create'
-    # get 'groups/:id/expenses/new', to: 'expenses#create'
-    # post 'groups/:id/expenses/new'
-    # resources :expenses, only: %i[new show]
-    # post 'expenses/new', to: 'expenses#create'
-
+    resources :friends, only: %i[index show new create delete]
   end
 
   root to: 'status#check'
