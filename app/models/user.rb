@@ -24,12 +24,11 @@ class User < ApplicationRecord
             :length => { :minimum => 10, :maximum => 15 }
 
   def add_friend(person)
-    return false if person.id == id
+    return false if (person_id = person.id) == id || friends.exists?(person_id)
 
     friends << person
   end
   # validates_associated :friends
   private
-
 
 end

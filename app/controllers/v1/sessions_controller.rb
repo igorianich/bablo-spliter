@@ -11,7 +11,8 @@ module V1
       if user.present? && user.authenticate(params[:password])
         session[:user_id] = user.id
         session[:email] = user.email
-        redirect_to root_path, notice: 'Logged in successfuly'
+        flash[:success] = 'Logged in successfuly'
+        redirect_to root_path#, notice: 'Logged in successfuly'
       else
         flash[:alert] = 'Invalid email or password'
         render :new

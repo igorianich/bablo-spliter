@@ -19,7 +19,8 @@ Rails.application.routes.draw do
       # end
     end
     post 'groups/new', to: 'groups#create'
-    resources :friends, only: %i[index show new create delete]
+    resources :friends, only: %i[index show new add destroy]
+    post 'friends/add', to: 'friends#add'
   end
 
   root to: 'status#check'

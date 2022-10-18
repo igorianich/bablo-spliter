@@ -18,6 +18,12 @@ class GroupPolicy < ApplicationPolicy
     p user_member?
     user_member?
   end
+  def show?
+    p '+++++++++++++++++++++++++'
+    p 'user_member?'
+    p user_member?
+    user_member?
+  end
 
   def user_member?
     record.members.exists?(user.id)

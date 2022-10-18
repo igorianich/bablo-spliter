@@ -41,6 +41,10 @@ class ApplicationPolicy
     @record.owner = @user
   end
 
+  def is_current_user?
+    @user == current_user
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

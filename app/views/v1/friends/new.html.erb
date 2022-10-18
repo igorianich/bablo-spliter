@@ -1,0 +1,20 @@
+<%= form_tag(new_friend_path, method: :get) do %>
+  <%= text_field_tag('friend[email]')%>
+  <%= submit_tag "Search" %>
+<% end %>
+<% if @friend.is_a?(String)%>
+  <h6 class="card-title ps-2"> <%= @friend %></h6>
+<% elsif @friend.present?%>
+    <div class="w-100">
+      <a class="row p-1 text-decoration-none text-dark" href="http://www.google.com">
+        <div class="col-6 col-sm-1"><%=@friend.full_name %></div>
+        <div class="col-6 col-sm-1"><%= @friend.email %></div>
+        <div class="col-6 col-sm-1">
+<!--          <a href=<%#= friends_add_path %>, role="button">-->
+<!--            <button type="button" class="btn btn-primary">Add friend</button>-->
+            <%= button_to 'Add friend', friends_add_path, params: { friend: { id: @friend.id }} %>
+<!--          </a>-->
+        </div>
+      </a>
+    </div>
+<% end %>
