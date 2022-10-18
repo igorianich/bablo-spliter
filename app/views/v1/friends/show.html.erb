@@ -1,0 +1,9 @@
+<h5 class="card-title ps-2">  <%= @friend.full_name %></h5><div class="d-flex flex-column align-items-center">
+  <div class="w-100">
+    <div class="col-6 col-sm-1"><%=@friend.full_name %></div>
+    <div class="col-6 col-sm-1"><%= @friend.email %></div>
+  </div>
+</div>
+<div>
+  <%= button_to 'Delete', friend_path(@friend), method: :delete %>
+</div>

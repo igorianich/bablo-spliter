@@ -1,17 +1,16 @@
 <% if @friends.present? %>
   <% @friends.each do |friend| %>
     <div class="w-100">
-      <a class="row p-1 text-decoration-none text-dark" href="http://www.google.com">
+      <a class="row p-1 text-decoration-none text-dark" href= <%= friend_path(friend) %>>
         <div class="col-6 col-sm-1"><%=friend.full_name %></div>
-<!--        <div class="col-6 col-sm-1"><%#= expense.title %></div>-->
-<!--        <div class="col-6 col-sm-3"><%#= expense.total %></div>-->
+        <div class="col-6 col-sm-1"><%=friend.email %></div>
       </a>
     </div>
 
   <% end %>
 <% else %>
   <div>
-    <h6 class="card-title ps-2"> No expenses</h6>
+    <h6 class="card-title ps-2">No friends</h6>
   </div>
 <% end %>
 

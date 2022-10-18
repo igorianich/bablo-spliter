@@ -7,13 +7,6 @@ class FriendPolicy < ApplicationPolicy
     is_friend?
   end
 
-  def index?
-    p '+++++++++++++++++++++++++'
-    p 'user_member?'
-    p user_member?
-    user_member?
-  end
-
   def show?
     is_friend?
   end

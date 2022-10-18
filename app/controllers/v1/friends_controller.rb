@@ -8,13 +8,13 @@ module V1
     end
 
     def show
-      authorize @friend
+      authorize @friend, policy_class: FriendPolicy
     end
 
     def new
       @friend =
         if search_params[:email].present?
-          User.find_by(email: search_params[:email]) || 'User not found, please check is email correct'
+          User.where("email LIKE ?", "%" + search_params[:email] + "%").first || 'User not found, please check is email correct'
         else
           nil
         end
@@ -34,6 +34,8 @@ module V1
 
     def destroy
       current_user.friends.delete(@friend)
+      flash[:notice] = 'Friend was deleted'
+      render :index
     end
 
     private
